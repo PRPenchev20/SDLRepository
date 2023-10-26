@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Server\Desktop\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;C:\Users\Server\Desktop\SDL2-devel-2.24.2-VC\SDL2-2.24.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Server\Desktop\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;C:\Users\Server\Desktop\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;..\SDL2-devel-2.24.2-VC\SDL2-2.24.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x64;..\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Server\Desktop\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;C:\Users\Server\Desktop\SDL2-devel-2.24.2-VC\SDL2-2.24.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Server\Desktop\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;C:\Users\Server\Desktop\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;..\SDL2-devel-2.24.2-VC\SDL2-2.24.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x64;..\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

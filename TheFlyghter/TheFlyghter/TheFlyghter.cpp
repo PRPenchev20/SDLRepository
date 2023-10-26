@@ -6,8 +6,8 @@
 
 using namespace std;
 
-const int SCREEN_WIDTH = 1000;
-const int SCREEN_HEIGHT = 800;
+const int SCREEN_WIDTH = 1920;  // Desired width
+const int SCREEN_HEIGHT = 1080; // Desired height
 
 class player
 {
@@ -16,8 +16,8 @@ private:
     float current_health = 100.0f;
     int attack_speed = 20; //The lower the faster = X renders for a attack
     float damage = 2.0f; //The lower the faster
-    int size = 50;//X pixels
-    string skin = "../images/bitmap.png";
+    int size = 100;//X pixels
+    string skin = "../images/ship_skin2.png";
     SDL_Texture* texture;
 public:
     void loadTexture(SDL_Renderer* renderer, const string& imagePath)
@@ -84,7 +84,6 @@ public:
 
     ~bullet()
     {
-        cout << "Done";
         //SDL_DestroyTexture(texture);
     }
 
@@ -158,8 +157,8 @@ void game_tick(SDL_Renderer* renderer, int& counter, vector<bullet>& bullets, pl
 {
     if (counter % player1.return_attack_speed() == 0)
     {
-        bullets.push_back(bullet(renderer, x, y, 5, 40, 10, 10, "../images/laser.png"));
-    }
+        bullets.push_back(bullet(renderer, x, y, 20, 40, 10, 10, "../images/laser1.png"));
+    } 
     counter++;
 }
 
@@ -172,17 +171,17 @@ int main(int argc, char* argv[])
     float deltaTime = 0;
     float moveSpeed = 200.0f;
  
-    SDL_Window* window = SDL_CreateWindow("Player Movement", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow("SDL App", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     bool quit = false;
     int mouseX, mouseY;
-    int counter = 0;
+    int counter = 0;      
 
     vector<bullet> bullets;
 
     player player1;
-    player1.loadTexture(renderer, "../images/bitmap.png");
+    player1.loadTexture(renderer, "../images/ship_skin2.png");
     Background background(renderer, "../images/background.png", 2);
 
     while (!quit)
@@ -215,7 +214,7 @@ int main(int argc, char* argv[])
 
         for (auto& b : bullets)
         {
-            b.move();    
+            b.move();     
             b.render(renderer);
         }
 
