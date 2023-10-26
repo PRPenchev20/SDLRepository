@@ -9,20 +9,22 @@ using namespace std;
 const int SCREEN_WIDTH = 1920;  // Desired width
 const int SCREEN_HEIGHT = 1080; // Desired height
 
-class player
+class basic_stats
 {
-private:
+protected:
+    string skin = "../images/ship_skin2.png";//basic skin
+    SDL_Texture* texture;
     float max_health = 100.0f;
     float current_health = 100.0f;
     int attack_speed = 20; //The lower the faster = X renders for a attack
     float damage = 2.0f; //The lower the faster
     int size = 100;//X pixels
-    string skin = "../images/ship_skin2.png";
-    SDL_Texture* texture;
+    int pos_x, pos_y;
+
 public:
-    void loadTexture(SDL_Renderer* renderer, const string& imagePath)
+    void loadTexture(SDL_Renderer* renderer)
     {
-        SDL_Surface* surface = IMG_Load(imagePath.c_str());
+        SDL_Surface* surface = IMG_Load(skin.c_str());
         texture = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_FreeSurface(surface);
     }
@@ -32,7 +34,17 @@ public:
         SDL_Rect playerRect = { x, y, size, size };
         SDL_RenderCopy(renderer, texture, NULL, &playerRect);
     }
+};
 
+class enemies : public basic_stats
+{
+    string skin = "";
+};
+
+class player : public basic_stats
+{
+public:
+    string skin = "";
     void hit(float damage_taken)
     {
         current_health -= damage_taken;
@@ -57,6 +69,17 @@ public:
     {
         return attack_speed;
     }
+
+    bool touched(SDL_Rect rect)
+    {
+        if (rect.x < pos_x + size &&
+            rect.x + rect.w > pos_x &&
+            rect.y < pos_y + size &&
+            rect.y + rect.h > pos_y)
+            return true;
+        else
+            return false;
+    }
 };
 
 class bullet
@@ -80,11 +103,6 @@ public:
         this->width = width;
         this->height = height;
         loadTexture(renderer, skin);
-    }
-
-    ~bullet()
-    {
-        //SDL_DestroyTexture(texture);
     }
 
     void loadTexture(SDL_Renderer* renderer, const string& imagePath)
@@ -153,14 +171,15 @@ public:
     }
 };
 
-void game_tick(SDL_Renderer* renderer, int& counter, vector<bullet>& bullets, player player1, int x, int y )
+void game_tick(SDL_Renderer* renderer, int& counter, vector<bullet>& bullets, player player1, int x, int y)
 {
     if (counter % player1.return_attack_speed() == 0)
     {
         bullets.push_back(bullet(renderer, x, y, 20, 40, 10, 10, "../images/laser1.png"));
-    } 
+    }
     counter++;
 }
+
 
 int main(int argc, char* argv[])
 {
@@ -181,7 +200,7 @@ int main(int argc, char* argv[])
     vector<bullet> bullets;
 
     player player1;
-    player1.loadTexture(renderer, "../images/ship_skin2.png");
+    player1.loadTexture(renderer);
     Background background(renderer, "../images/background.png", 2);
 
     while (!quit)
@@ -217,7 +236,6 @@ int main(int argc, char* argv[])
             b.move();     
             b.render(renderer);
         }
-
         player1.render(renderer, mouseX - player1.return_size() / 2, mouseY - player1.return_size() / 2);
        
         game_tick(renderer, counter, bullets, player1, mouseX, mouseY);
