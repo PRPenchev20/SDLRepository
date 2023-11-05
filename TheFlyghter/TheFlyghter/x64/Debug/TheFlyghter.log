@@ -1,5 +1,4 @@
 ﻿  TheFlyghter.cpp
-C:\Users\Server\SDLRepository\TheFlyghter\TheFlyghter\TheFlyghter.cpp(66,16): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\Server\SDLRepository\TheFlyghter\TheFlyghter\TheFlyghter.cpp(321,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Server\SDLRepository\TheFlyghter\TheFlyghter\TheFlyghter.cpp(327,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Server\SDLRepository\TheFlyghter\TheFlyghter\TheFlyghter.cpp(90,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Server\SDLRepository\TheFlyghter\TheFlyghter\TheFlyghter.cpp(96,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   TheFlyghter.vcxproj -> C:\Users\Server\SDLRepository\TheFlyghter\x64\Debug\TheFlyghter.exe

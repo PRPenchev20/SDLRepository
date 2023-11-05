@@ -137,7 +137,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="background.cpp" />
+    <ClCompile Include="basic_stats.cpp" />
+    <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="constants.cpp" />
+    <ClCompile Include="constants.h" />
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="TheFlyghter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="background.h" />
+    <ClInclude Include="basic_stats.h" />
+    <ClInclude Include="bullet.h" />
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
