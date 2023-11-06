@@ -124,6 +124,7 @@ int main(int argc, char* argv[])
         }
         if (player1.return_health() <= 0)
         {
+            cout << "score: " << counter << endl ;
             cout << "you lost";
             quit = true;
         }

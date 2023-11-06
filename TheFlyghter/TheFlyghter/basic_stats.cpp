@@ -1,8 +1,14 @@
 #include "basic_stats.h"
 #include <SDL_image.h>
 
-basic_stats::basic_stats() : texture(nullptr), skin(""), max_health(50.0f), current_health(50.0f),
-attack_speed(30), damage(2.0f), size(100), pos_x(0), pos_y(50) {}
+basic_stats::basic_stats() : 
+    texture(nullptr), 
+    skin(""), max_health(50.0f), 
+    current_health(50.0f),
+    attack_speed(30), 
+    damage(2.0f),
+    size(100), 
+    pos_x(0), pos_y(50) {}
 
 void basic_stats::loadTexture(SDL_Renderer* renderer) {
     SDL_Surface* surface = IMG_Load(skin.c_str());
