@@ -6,7 +6,7 @@ basic_stats::basic_stats() :
     skin(""), max_health(50.0f), 
     current_health(50.0f),
     attack_speed(30), 
-    damage(2.0f),
+    damage(10.0f),
     size(100), 
     pos_x(0), pos_y(50) {}
 
@@ -43,6 +43,11 @@ int basic_stats::return_attack_speed() {
 
 int basic_stats::return_health() {
     return current_health;
+}
+
+float basic_stats::return_damage()
+{
+    return damage;
 }
 
 bool basic_stats::touched(SDL_Rect rect) {

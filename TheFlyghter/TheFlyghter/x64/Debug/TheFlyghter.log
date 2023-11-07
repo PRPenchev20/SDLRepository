@@ -1,4 +1,3 @@
-﻿  TheFlyghter.cpp
-C:\Users\Server\SDLRepository\TheFlyghter\TheFlyghter\TheFlyghter.cpp(90,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Server\SDLRepository\TheFlyghter\TheFlyghter\TheFlyghter.cpp(96,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  player.cpp
+C:\Users\Server\SDLRepository\TheFlyghter\TheFlyghter\player.cpp(6,14): warning C4930: 'ultimate myUltimate(void)': prototyped function not called (was a variable definition intended?)
   TheFlyghter.vcxproj -> C:\Users\Server\SDLRepository\TheFlyghter\x64\Debug\TheFlyghter.exe

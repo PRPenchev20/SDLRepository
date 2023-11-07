@@ -14,15 +14,19 @@ using namespace std;
 
 void game_tick(SDL_Renderer* renderer, int& counter, vector<Bullet>& bullets, vector<enemy>& enemies, player player1, int x, int y)
 {
-    if (counter % player1.return_attack_speed() == 0)
+    if (player1.return_attack_mode() == false and counter % player1.return_attack_speed() == 0)
     {
-        bullets.push_back(Bullet(renderer, x, y, 20, 40, 10, 10, "../images/laser1.png", 1, true));
+        bullets.push_back(Bullet(renderer, x - player1.return_ultimate_size() / 2, y, 20, player1.return_ultimate_size(), 10, player1.return_damage(), "../images/laser1.png", 1, true));
+    }
+    else if (player1.return_attack_mode() == true and counter % player1.return_ultimate_attack_speed() == 0)
+    {
+        bullets.push_back(Bullet(renderer, x - player1.return_ultimate_size() / 2, y, player1.return_ultimate_size(), player1.return_ultimate_size() * 2, player1.return_ultimate_speed(), player1.return_ultimate_damage(), player1.return_ultimate_skin(), 1, true));
     }
 
     for(int i = 0; i < enemies.size(); i++)
     if (counter % enemies[i].return_attack_speed() == 0)
     {
-        bullets.push_back(Bullet(renderer, enemies[i].return_x() + enemies[i].return_size() / 2, enemies[i].return_y() + enemies[i].return_size() / 2, 20, 40, 10, 10, "../images/laser1.png", -1, false));
+        bullets.push_back(Bullet(renderer, enemies[i].return_x() + enemies[i].return_size() / 2, enemies[i].return_y() + enemies[i].return_size() / 2, 20, 40, 10, enemies[i].return_damage(), "../images/laser1.png", -1, false));
     }
 
     if (counter % 100 == 0)
@@ -55,6 +59,9 @@ int main(int argc, char* argv[])
     vector<enemy> enemies;
     enemy n;
 
+    SDL_Event event;
+    bool mouseClicked = false;
+
     player player1;
     player1.loadTexture(renderer);
 
@@ -70,6 +77,18 @@ int main(int argc, char* argv[])
         deltaTime = (currentTime - prevTime) / 1000.0f;
         SDL_RenderClear(renderer);
         SDL_Event e;
+
+        while (SDL_PollEvent(&event) != 0) {
+            if (event.type == SDL_QUIT) {
+                quit = true;
+            }
+            else if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
+                // Mouse button was clicked
+                // Perform the desired action here
+                mouseClicked = true;
+            }
+        }
+
         while (SDL_PollEvent(&e) != 0)
         {
             if (e.type == SDL_QUIT)
@@ -83,7 +102,7 @@ int main(int argc, char* argv[])
 
         bullets.erase(remove_if(bullets.begin(), bullets.end(), [&](Bullet& b) {
             if (b.returnY() <= 0) {
-                return true;
+                return true; 
             }
             else if (player1.touched(b.return_Rect()) == true and b.return_team() == false)
             {
@@ -110,7 +129,7 @@ int main(int argc, char* argv[])
         background.render(renderer);
 
         for (auto& b : bullets)
-        {
+        { 
             b.move();
             b.render(renderer);
         }
@@ -128,6 +147,15 @@ int main(int argc, char* argv[])
             cout << "you lost";
             quit = true;
         }
+
+        
+
+        // Game logic
+        if (mouseClicked) {
+            player1.switch_attack_mode();
+            mouseClicked = false;
+        }
+
         game_tick(renderer, counter, bullets,enemies, player1, mouseX, mouseY);
         SDL_RenderPresent(renderer);
         SDL_Delay(1000 / FPS);

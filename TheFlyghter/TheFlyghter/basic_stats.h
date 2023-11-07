@@ -9,6 +9,7 @@ protected:
     float max_health;
     float current_health;
     int attack_speed;
+    int attack_fly_speed;
     float damage;
     int size;
     int pos_x, pos_y;
@@ -24,4 +25,5 @@ public:
     int return_attack_speed();
     int return_health();
     bool touched(SDL_Rect rect);
+    float return_damage();
 };

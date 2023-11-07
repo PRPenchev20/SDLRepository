@@ -11,14 +11,14 @@ private:
     int width;
     int height;
     int speed; // X pixels per frame
-    int damage;
+    float damage;
     int way;
     bool player_team;
     std::string skin;
     SDL_Texture* texture;
 
 public:
-    Bullet(SDL_Renderer* renderer, int posX, int posY, int width, int height, int speed, int damage, const std::string& skin, int way, bool player_team);
+    Bullet(SDL_Renderer* renderer, int posX, int posY, int width, int height, int speed, float damage, const std::string& skin, int way, bool player_team);
 
     void loadTexture(SDL_Renderer* renderer, const std::string& imagePath);
     void render(SDL_Renderer* renderer);

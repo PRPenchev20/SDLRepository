@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Bullet::Bullet(SDL_Renderer* renderer, int posX, int posY, int width, int height, int speed, int damage, const std::string& skin, int way, bool player_team) : posX(posX), posY(posY), width(width), height(height), speed(speed), damage(damage), skin(skin), way(way), player_team(player_team), texture(nullptr) {
+Bullet::Bullet(SDL_Renderer* renderer, int posX, int posY, int width, int height, int speed, float damage, const std::string& skin, int way, bool player_team) : posX(posX), posY(posY), width(width), height(height), speed(speed), damage(damage), skin(skin), way(way), player_team(player_team), texture(nullptr) {
     loadTexture(renderer, skin);
 }
 
