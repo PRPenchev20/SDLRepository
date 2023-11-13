@@ -144,8 +144,10 @@
     <ClCompile Include="constants.h" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="render.cpp" />
     <ClCompile Include="TheFlyghter.cpp" />
     <ClCompile Include="ultimate.cpp" />
+    <ClCompile Include="update.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="background.h" />
@@ -153,7 +155,9 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="render.h" />
     <ClInclude Include="ultimate.h" />
+    <ClInclude Include="update.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
